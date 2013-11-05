@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem 'mongoid'
 gem 'jquery-rails'
+
+#for mongoid
+gem 'mongoid'
+gem 'bson_ext'
 
 group :assets do
   gem 'sass-rails', '~>3.2.3'
