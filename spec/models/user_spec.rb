@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe User do
+  it { should allow_mass_assignment_of :username }
+  it { should allow_mass_assignment_of :email }
+  it { should allow_mass_assignment_of :password }
+
+  it { should validate_presence_of :username }
+  it { should validate_presence_of :email }
+  it { should validate_presence_of :password }
+
+  it { should have_many(:goals).with_foreign_key(:user_id) }
+
+
   context 'without username, email, or password' do
     let(:incomplete_user) { FactoryGirl.create(:blank_user) }
 
