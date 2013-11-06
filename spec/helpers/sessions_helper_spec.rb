@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SessionHelper do
+describe SessionsHelper do
   describe '#current_user' do
     let(:user) { FactoryGirl.build(:user) }
 

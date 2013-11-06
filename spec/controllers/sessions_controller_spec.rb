@@ -1,18 +1,19 @@
 require 'spec_helper'
 
-describe SessionController do
+describe SessionsController do
+
+  def login(user)
+    post session_url, username: user.username, password: '12345678'
+  end
+
+  def logout
+    delete session_url
+  end
 
   context 'with an existing user record' do
     let(:user) { FactoryGirl.build(:user) }
 
     describe 'POST #create' do
-      def login(user)
-        post session_url, username: user.username, password: '12345678'
-      end
-
-      def logout
-        delete session_url
-      end
 
       it 'sets a session token on the user and in the cookie' do
         user.stub(:set_session_token) { '123' }
@@ -39,9 +40,7 @@ describe SessionController do
         logout
         expect(response).to redirect_to welcome_url
       end
-
     end
-
   end
 
 end
