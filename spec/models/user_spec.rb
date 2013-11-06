@@ -7,13 +7,20 @@ describe User do
 
   it { should validate_presence_of :username }
   it { should validate_presence_of :email }
-  it { should validate_presence_of :password }
+  it { should validate_presence_of :password_digest }
 
   it { should have_many(:goals).with_foreign_key(:user_id) }
 
 
   context 'without username, email, or password' do
-    let(:incomplete_user) { FactoryGirl.create(:blank_user) }
+    let(:incomplete_user) do
+      FactoryGirl.build(
+        :user,
+        username: nil,
+        email: nil,
+        password: nil
+      )
+    end
 
     it 'validates presence of username' do
       expect(incomplete_user).to have(1).error_on :username
@@ -23,14 +30,14 @@ describe User do
       expect(incomplete_user).to have(1).error_on :email
     end
 
-    it 'validates presence of password' do
-      expect(incomplete_user).to have(1).error_on :password
+    it 'validates presence of digest' do
+      expect(incomplete_user).to have(1).error_on :password_digest
     end
   end
 
   context 'duplicate usernames or emails' do
-    let(:user1) { FactoryGirl.create(:user) }
-    let(:user2) { FactoryGirl.create(:user) }
+    let(:user1) { FactoryGirl.build(:user) }
+    let(:user2) { FactoryGirl.build(:user) }
 
     it 'validates uniqueness of username' do
       user1
