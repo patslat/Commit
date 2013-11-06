@@ -29,4 +29,9 @@ class User
     BCrypt::Password.new(self.password_digest.clone) == (password)
   end
 
+  def set_session_token!
+    self.session = SecureRandom::urlsafe_base64
+    self.save ? self.session : nil
+  end
+
 end
