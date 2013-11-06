@@ -7,6 +7,8 @@ gem 'backbone-on-rails'
 gem 'haml-rails'
 gem 'jquery-rails'
 
+gem 'bcrypt-ruby', '~>3.1.2', require: 'bcrypt'
+
 #for mongoid
 gem 'mongoid'
 gem 'bson_ext'
@@ -21,6 +23,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'mongoid-rspec'
   gem 'factory_girl_rails'
 end
 
