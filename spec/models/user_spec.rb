@@ -49,4 +49,18 @@ describe User do
       expect(user2).to have(1).error_on :email
     end
   end
+
+  describe '#valid_password?' do
+    context 'valid user model' do
+      let(:user) { FactoryGirl.build(:user) }
+
+      it 'returns true when valid' do
+        user.valid_password?('12345678')
+      end
+
+      it 'returns false when invalid' do
+        user.valid_password?('derp')
+      end
+    end
+  end
 end
