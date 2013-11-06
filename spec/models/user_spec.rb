@@ -50,16 +50,26 @@ describe User do
     end
   end
 
-  describe '#valid_password?' do
+  describe '#is_password?' do
     context 'valid user model' do
       let(:user) { FactoryGirl.build(:user) }
 
       it 'returns true when valid' do
-        user.valid_password?('12345678')
+        user.is_password?('12345678')
       end
 
       it 'returns false when invalid' do
-        user.valid_password?('derp')
+        user.is_password?('derp')
+      end
+    end
+  end
+
+  describe '#find_by_credentials' do
+    context 'finds a valid user' do
+      let(:user) { FactoryGirl.build(:user) }
+      it 'finds a valid user' do
+        @user = User.find_by_credentials(username: user.username, password: '12345678')
+        expect(@user.username).to eq(user.username)
       end
     end
   end

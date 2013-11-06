@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'jquery-rails'
 
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~>3.1.2', require: 'bcrypt'
 
 #for mongoid
 gem 'mongoid'

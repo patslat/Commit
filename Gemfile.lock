@@ -177,7 +177,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby
+  bcrypt-ruby (~> 3.1.2)
   bson_ext
   capybara
   coffee-rails (~> 3.2.1)
