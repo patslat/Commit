@@ -9,4 +9,6 @@ class Step
 
   validates_inclusion_of :work_done, in: [:minimum, :sufficient, :maximum]
 
+  embedded_in :goal, inverse_of: :steps
+
 end

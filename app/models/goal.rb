@@ -6,8 +6,9 @@ class Goal
   validates_presence_of :description
   validates_presence_of :daily_goal
 
-  belongs_to :user
+  belongs_to :user, inverse_of: :goals
 
   embeds_one :daily_goal
   embeds_many :steps
+
 end
