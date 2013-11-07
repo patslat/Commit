@@ -22,21 +22,44 @@ describe 'the signup process' do
     end
   end
 
-  describe 'signing up a user' do
-    before :each do
-      visit new_user_url
-      fill_in 'Username', :with => 'ermahgerd'
-      fill_in 'Email', :with => 'derp@derp.com'
-      fill_in 'Password', :with => 'crappybara'
-      click_on 'Create User'
+  describe 'sign up' do
+    context 'successful sign up' do
+      before :each do
+        visit new_user_url
+        fill_in 'Username', :with => 'ermahgerd'
+        fill_in 'Email', :with => 'ermah@gerd.com'
+        fill_in 'Password', :with => 'crappybara'
+        click_button 'Sign Up'
+      end
+
+      it 'redirects to root' do
+        expect(page).to have_content 'TODO'
+      end
+
+      it 'shows username on the homepage after signup' do
+        expect(page).to have_content 'ermahgerd'
+      end
     end
 
-    it 'redirects to root after signup' do
-      expect(page).to have_content 'TODO'
-    end
+    context 'unsuccessful sign up' do
+      before :each do
+        visit new_user_url
+        fill_in 'Username', :with => 'ermahgerd'
+        fill_in 'Email', :with => ''
+        fill_in 'Password', :with => '123456'
+        click_button 'Sign Up'
+      end
 
-    it 'shows username on the homepage after signup' do
-      expect(page).to have_content 'ermahgerd'
+      it 'should re-render form' do
+        expect(page).to have_content 'Sign Up'
+        expect(page).to have_content 'Username'
+        expect(page).to have_content 'Email'
+        expect(page).to have_content 'Password'
+      end
+
+      it 'should contain old information' do
+        expect(find_field('Username').value).to have_content 'ermahgerd'
+      end
     end
   end
 end

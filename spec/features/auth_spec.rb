@@ -18,21 +18,38 @@ describe 'the login process' do
     end
   end
 
-  describe 'after signing in' do
+  describe 'successful sign in' do
     before :each do
       visit new_session_url
       fill_in 'Username', :with => user.username
-      fill_in 'Password', :with => '123456'
+      fill_in 'Password', :with => '12345678'
       click_button 'Sign In'
     end
 
-    it 'redirects to root after sign' do
+    it 'redirects to root' do
       expect(page).to have_content 'TODO'
     end
 
     it 'shows username on the homepage' do
       expect(page).to have_content user.username
     end
-
   end
+
+  context 'unsuccessful sign in' do
+    before :each do
+      visit new_session_url
+      fill_in 'Username', :with => user.username
+      fill_in 'Password', :with => 'wrong password'
+      click_button 'Sign In'
+    end
+
+    it 're-renders the form' do
+      expect(page).to have_content 'Sign In'
+    end
+
+    it 'displays error messages' do
+      expect(page).to have_content 'Invalid credentials'
+    end
+  end
+
 end

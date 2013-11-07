@@ -8,7 +8,8 @@ class UsersController < ApplicationController
       self.current_user = @user
       redirect_to root_url
     else
-      render :json => @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages.join(', ')
+      render :new
     end
   end
 

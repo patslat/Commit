@@ -3,7 +3,7 @@
     %h1 Sign In
 
   %div#sign-in-form.form
-    = form_for :user, method: :post, url: '/session' do |f|
+    = form_for (@user || :user), method: :post, url: '/session' do |f|
 
       %div#session-username.form-section
         %div.form-label
