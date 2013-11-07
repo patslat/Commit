@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Step do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should allow_mass_assignment_of :date }
+  it { should allow_mass_assignment_of :work_done }
+
+  it { should be_embedded_in(:goal).as_inverse_of :steps }
 end

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe DailyGoal do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should allow_mass_assignment_of :minimum }
+  it { should allow_mass_assignment_of :sufficient }
+  it { should allow_mass_assignment_of :maximum }
+
+  it { should be_embedded_in(:goal).as_inverse_of :daily_goal }
 end

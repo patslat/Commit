@@ -9,7 +9,7 @@ describe User do
   it { should validate_presence_of :email }
   it { should validate_presence_of :password_digest }
 
-  #it { should have_many(:goals).with_foreign_key(:user_id) }
+  it { should have_many(:goals).with_foreign_key(:user_id) }
 
 
   context 'without username, email, or password' do
