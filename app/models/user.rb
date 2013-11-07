@@ -6,6 +6,8 @@ class User
   field :session_token, type: String
   field :password_digest, type: String
 
+  has_many :goals
+
   attr_protected :password_digest
 
   validates_presence_of :username

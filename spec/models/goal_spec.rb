@@ -7,4 +7,7 @@ describe Goal do
 
   it { should embed_one :daily_goal }
   it { should embed_many :steps }
+
+  it { should validate_presence_of :description }
+  it { should validate_presence_of :daily_goal }
 end
