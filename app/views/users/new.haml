@@ -4,13 +4,24 @@
 
   %div#new-user-form.form
     = form_for @user do |f|
-      = f.label :username
-      = f.text_field :username
 
-      = f.label :email
-      = f.text_field :email
+      %div#user-username.form-section
+        %div.form-label
+          = f.label :username
+        %div.form-field
+          = f.text_field :username
 
-      = f.label :password
-      = f.password_field :password
+      %div#user-email.form-section
+        %div.form-label
+          = f.label :email
+        %div.form-field
+          = f.text_field :email
 
-      = f.submit
+      %div#user-password.form-section
+        %div.form-label
+          = f.label :password
+        %div.form-field
+          = f.password_field :password
+
+      %div#user-submit.form-section
+        = f.submit

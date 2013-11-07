@@ -1,0 +1,5 @@
+%div#username
+  = current_user.username
+  %div#log-out-link
+    = button_to 'Sign Out', session_url, method: :delete
+%div#content
