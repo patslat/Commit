@@ -3,11 +3,11 @@ require 'spec_helper'
 describe SessionsController do
 
   def login(user)
-    post session_url, username: user.username, password: '12345678'
+    post :create, user: { username: user.username, password: '12345678' }
   end
 
   def logout
-    delete session_url
+    delete :destroy
   end
 
   context 'with an existing user record' do
@@ -16,10 +16,8 @@ describe SessionsController do
     describe 'POST #create' do
 
       it 'sets a session token on the user and in the cookie' do
-        user.stub(:set_session_token) { '123' }
-        expect(user).to receive :set_session_token!
         login(user)
-        expect(session[:session_token]).to be '123'
+        expect(session[:session_token]).to be_instance_of String
       end
 
       it 'redirects to root after successful login' do
@@ -31,7 +29,8 @@ describe SessionsController do
     describe 'POST #destroy' do
       it "should clear a user's session" do
         login(user)
-        expect(user).to receive(:session=).with nil
+        User.stub(:where) { [user] }
+        expect(user).to receive :reset_session_token!
         logout
       end
 

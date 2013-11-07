@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_filter :require_no_current_user!, :only => :create
+  before_filter :require_current_user!, :only => :destroy
+
   def create
     user = User.find_by_credentials(
       username: params[:user][:username],
@@ -14,5 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logout_current_user!
+    redirect_to welcome_url
   end
 end

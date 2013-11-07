@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe SessionsHelper do
   describe '#current_user' do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryGirl.build(:user, :session_token => '123') }
 
     context 'logged in user' do
       it 'returns the current user' do
-        User.stub(:find_by_session) { user }
-        expect(current_user).to be user
+        current_user = user
+        expect(current_user.session_token).to eq '123'
       end
     end
 

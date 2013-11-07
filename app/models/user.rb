@@ -3,7 +3,7 @@ class User
 
   field :username, type: String
   field :email, type: String
-  field :session, type: String
+  field :session_token, type: String
   field :password_digest, type: String
 
   attr_protected :password_digest
@@ -15,10 +15,17 @@ class User
   validates_uniqueness_of :username
   validates_uniqueness_of :email
 
+  after_initialize :ensure_session_token
+
   def self.find_by_credentials(credentials)
     user = User.where(username: credentials[:username]).first
     user.is_password?(credentials.delete :password) ? user : nil
   end
+
+  def self.generate_session_token
+    SecureRandom::urlsafe_base64
+  end
+
 
   def password=(password)
     return self.errors[:password_digest] = "must be present." unless password
@@ -29,9 +36,14 @@ class User
     BCrypt::Password.new(self.password_digest.clone) == (password)
   end
 
-  def set_session_token!
-    self.session = SecureRandom::urlsafe_base64
-    self.save ? self.session : nil
+  def reset_session_token!
+    self.session_token = self.class.generate_session_token
+    self.save!
+  end
+
+  private
+  def ensure_session_token
+    self.session_token ||= self.class.generate_session_token
   end
 
 end

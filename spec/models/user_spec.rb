@@ -74,16 +74,14 @@ describe User do
     end
   end
 
-  describe '#set_session_token!' do
+  describe '#reset_session_token!' do
     context 'saves user and returns token' do
       let(:user) { FactoryGirl.build(:user) }
 
       it 'saves session token and returns it' do
-        user.stub(save: true)
-        expect(user).to receive(:save)
-        session = user.set_session_token!
-
-        expect(session).to be_an_instance_of String
+        expect(user).to receive(:session_token=)
+        expect(user).to receive(:save!)
+        user.reset_session_token!
       end
     end
   end
