@@ -1,0 +1,23 @@
+!!! HTML
+%html
+  %head
+    %title Commit
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %div#navbar
+      - if current_user.nil?
+        %div#authentication
+
+          %div#sign-in
+            %a{ :href => new_session_url } Sign In
+          %div#sign-up
+            %a{ :href => new_user_url } Sign Up
+      - else
+        %div#current-user
+          = current_user.username
+        %div#sign-out
+          = button_to 'Sign Out', session_url, method: :delete
+
+    = yield

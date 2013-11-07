@@ -20,4 +20,7 @@ class SessionsController < ApplicationController
     logout_current_user!
     redirect_to welcome_url
   end
+
+  def new
+  end
 end

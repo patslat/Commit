@@ -1,17 +1,25 @@
 require 'spec_helper'
 
 describe 'the signup process' do
-
-  it 'has a new user page' do
-    visit new_user_url
-    expect(page).to have_content 'New User'
+  context 'welcome page' do
+    it 'has a link to Sign Up' do
+      visit welcome_url
+      expect(page).to have_content 'Sign Up'
+    end
   end
 
-  it 'has a new user form' do
-    visit new_user_url
-    expect(page).to have_content 'Username'
-    expect(page).to have_content 'Email'
-    expect(page).to have_content 'Password'
+  context 'signing up' do
+    it 'has a new user page' do
+      visit new_user_url
+      expect(page).to have_content 'Sign Up'
+    end
+
+    it 'has a new user form' do
+      visit new_user_url
+      expect(page).to have_content 'Username'
+      expect(page).to have_content 'Email'
+      expect(page).to have_content 'Password'
+    end
   end
 
   describe 'signing up a user' do

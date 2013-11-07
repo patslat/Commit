@@ -1,0 +1,22 @@
+%div#sign-in
+  %div#sign-in-header.header
+    %h1 Sign In
+
+  %div#sign-in-form.form
+    = form_for :user, method: :post, url: '/session' do |f|
+
+      %div#session-username.form-section
+        %div.form-label
+          = f.label :username
+        %div.form-field
+          = f.text_field :username
+
+      %div#session-password.form-section
+        %div.form-label
+          = f.label :password
+        %div.form-field
+          = f.password_field :password
+
+      %div#session-submit.form-section
+        %div.form-button
+          = f.submit 'Sign In'
