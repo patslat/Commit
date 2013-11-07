@@ -1,0 +1,16 @@
+%div#new-user
+  %div#new-user-header.header
+    %h1 New User
+
+  %div#new-user-form.form
+    = form_for @user do |f|
+      = f.label :username
+      = f.text_field :username
+
+      = f.label :email
+      = f.text_field :email
+
+      = f.label :password
+      = f.password_field :password
+
+      = f.submit
