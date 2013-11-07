@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SessionsController do
 
   def login(user)
-    post :create, user: { username: user.username, password: '12345678' }
+    post :create, user: { username: user[:username], password: '12345678' }
   end
 
   def logout
@@ -11,7 +11,7 @@ describe SessionsController do
   end
 
   context 'with an existing user record' do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryGirl.create(:user) }
 
     describe 'POST #create' do
 

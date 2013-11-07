@@ -17,9 +17,9 @@ class User
 
   after_initialize :ensure_session_token
 
-  def self.find_by_credentials(credentials)
-    user = User.where(username: credentials[:username]).first
-    user.is_password?(credentials.delete :password) ? user : nil
+  def self.find_by_credentials(username, password)
+    user = User.where(username: username).first
+    user.is_password?(password) ? user : nil
   end
 
   def self.generate_session_token
