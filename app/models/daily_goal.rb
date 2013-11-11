@@ -9,5 +9,5 @@ class DailyGoal
   validates_presence_of :sufficient
   validates_presence_of :maximum
 
-  embedded_in :goal, inverse_of: :daily_goal
+  embedded_in :goal, class_name: "Goal", inverse_of: :daily_goal
 end

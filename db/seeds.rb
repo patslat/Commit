@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+u = User.create!(username: "patslat", email: "patslat", password: "patslat")
+
+steps = (Date.new - 10.days..Date.new).map do |date|
+  Step.new({
+    date: date,
+    work_done: [:maximum, :sufficient, :minimum].sample,
+    description: 'did stuff'
+  })
+end
+
+g = u.goals.create!(
+  description: "Write code every day",
+  steps: steps,
+  daily_goal: {
+    minimum: "Refactor a method",
+    sufficient: "Implement a feature",
+    maximum: "Build an app"
+  }
+)
+

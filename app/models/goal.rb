@@ -8,7 +8,7 @@ class Goal
 
   belongs_to :user, inverse_of: :goals
 
-  embeds_one :daily_goal
-  embeds_many :steps
+  embeds_one :daily_goal, class_name: "DailyGoal"
+  embeds_many :steps, class_name: "Step"
 
 end

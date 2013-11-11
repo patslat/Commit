@@ -7,7 +7,7 @@ Commit::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :goals do
-        resources :steps, :only => [:create, :destroy]
+        resources :steps, :only => [:create, :destroy, :index]
       end
     end
   end

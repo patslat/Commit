@@ -20,7 +20,7 @@ class User
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)
-    user = User.where(username: username).first
+    return nil unless user = User.where(username: username).first
     user.is_password?(password) ? user : nil
   end
 
