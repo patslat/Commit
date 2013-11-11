@@ -8,15 +8,19 @@ module SessionsHelper
     session[:session_token] = user.session_token
   end
 
+  def logged_in?
+    !!current_user
+  end
+
   def logout_current_user!
     current_user.reset_session_token!
   end
 
   def require_current_user!
-    redirect_to welcome_url if current_user.nil?
+    redirect_to welcome_url unless logged_in?
   end
 
   def require_no_current_user!
-    redirect_to root_url unless current_user.nil?
+    redirect_to root_url if logged_in?
   end
 end

@@ -4,6 +4,3 @@ window.Commit =
   Views: {}
   Routers: {}
   initialize: -> alert 'Hello from Backbone!'
-
-$(document).ready ->
-  Commit.initialize()

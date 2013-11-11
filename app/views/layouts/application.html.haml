@@ -11,7 +11,7 @@
         - if flash[:errors]
           %div#errors
             = flash[:errors]
-      - if current_user.nil?
+      - if !logged_in?
         %div#authentication
           %div#sign-in
             %a{ :href => new_session_url } Sign In
