@@ -3,5 +3,8 @@ window.Commit =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: ->
+  initialize: (goaldata) ->
     $content = $('#content')
+    goals = new Commit.Collections.Goals(goaldata)
+
+    new Commit.Routers.Goals($content, goals)
