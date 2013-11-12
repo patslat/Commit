@@ -1,8 +1,8 @@
 %div#content
 
 :javascript
-  var goals = #{@goals.to_json.html_safe}
-  console.log(goals)
+  var goals = #{ @goals.to_json }
+
   $(document).ready(function () {
     Commit.initialize(goals);
   });

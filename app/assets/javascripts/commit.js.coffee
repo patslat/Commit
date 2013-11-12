@@ -5,6 +5,9 @@ window.Commit =
   Routers: {}
   initialize: (goaldata) ->
     $content = $('#content')
-    goals = new Commit.Collections.Goals(goaldata)
-
-    new Commit.Routers.Goals($content, goals)
+    goals = new Commit.Collections.Goals(goaldata, { parse: true })
+    router = new Commit.Routers.Goals(
+      elements: { index: $content },
+      goals: goals
+    )
+    Backbone.history.start()
