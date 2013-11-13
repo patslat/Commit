@@ -9,7 +9,7 @@ class Commit.Views.GoalsIndex extends Backbone.View
     $goalsContainer = this.$el.find "#goals-index"
 
     @collection.each (goal) ->
-      show = new Commit.Views.GoalShow
+      show = new Commit.Views.GoalShow({model: goal})
       @children << show
       $goalsContainer.append(show.render().$el)
     return this
