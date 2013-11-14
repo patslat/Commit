@@ -1,2 +1,2 @@
 %div.goal-description
-  = @goal.escape "description"
+  %h1 = @goal.escape "description"

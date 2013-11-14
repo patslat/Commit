@@ -17,23 +17,27 @@ html, body {
 }
 
 .goal-show {
+  text-align: center;
+  display: inline-block;
   min-height: 200px;
   max-width: 500px;
   border: 1px solid grey;
 }
 
+.dg-levels {
+}
+
 .steps-index {
-  height: 100%;
-  width: 100%;
 }
 
 .step-square {
-  border: 1px solid grey;
   width: 25px;
   height: 25px;
-  float: left;
   display: inline-block;
 }
+  .none {
+    background-color: lightgrey;
+  }
 
   .minimum {
     background-color: lightseagreen;
