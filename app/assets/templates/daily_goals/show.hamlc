@@ -1,0 +1,8 @@
+%div.dg-title
+  Daily Goal
+%div.dg-minimum
+  = @dailyGoal.escape "minimum"
+%div.dg-sufficient
+  = @dailyGoal.escape "sufficient"
+%div.dg-maximum
+  = @dailyGoal.escape "maximum"

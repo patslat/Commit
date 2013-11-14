@@ -6,13 +6,21 @@ class Commit.Views.GoalShow extends Backbone.View
 
   render: ->
     @$el.html @template(goal: @model)
-
-    stepsView = new Commit.Views.StepsIndex(collection: @model.steps())
-    @children << stepsView
-    @$el.append stepsView.render().$el
-
+    @_renderDailyGoal()
+    @_renderSteps()
     this
 
   remove: ->
     child.remove() for child in @children
     super()
+
+
+  _renderSteps: ->
+    stepsView = new Commit.Views.StepsIndex(collection: @model.steps())
+    @children << stepsView
+    @$el.append stepsView.render().$el
+
+  _renderDailyGoal: ->
+    dailyGoalView = new Commit.Views.DailyGoalShow(model: @model.dailyGoal())
+    @children << dailyGoalView
+    @$el.append dailyGoalView.render().$el
