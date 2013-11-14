@@ -6,11 +6,24 @@ class Commit.Collections.Steps extends Backbone.Collection
     new Date(step.get 'date')
 
   lastDays: (n) ->
+    lastDays = new Commit.Collections.Steps
+
     today = new Date
     startDate = new Date
     startDate.setDate(startDate.getDate() - n)
 
     while startDate <= today
-      unless @findWhere(date: startDate)
-        @add new Commit.Models.Step(date: startDate.toString(), work_done: 'none')
+      match = @find (step) ->
+        step.matchingDate(startDate)
+
+      if match
+        lastDays.add match
+      else
+        lastDays.add new Commit.Models.Step(
+          {date: startDate, work_done: 'none'},
+          { parse: true }
+        )
+
       startDate.setDate(startDate.getDate() + 1)
+
+    lastDays

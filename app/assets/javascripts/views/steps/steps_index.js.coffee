@@ -4,7 +4,6 @@ class Commit.Views.StepsIndex extends Backbone.View
   template: JST['steps/index']
 
   render: ->
-    @collection.lastDays(90)
-    console.log @collection.pluck('date')
-    @$el.html @template(steps: @collection)
+    lastDays = @collection.lastDays(90)
+    @$el.html @template(steps: lastDays)
     this
