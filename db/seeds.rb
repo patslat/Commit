@@ -1,6 +1,6 @@
 u = User.create!(username: "patslat", email: "patslat", password: "patslat")
 
-steps = (Date.new - 10.days..Date.new).map do |date|
+steps = (DateTime.now - 10.days..DateTime.now).map do |date|
   Step.new({
     date: date,
     work_done: [:maximum, :sufficient, :minimum].sample,
@@ -17,4 +17,3 @@ g = u.goals.create!(
     maximum: "Build an app"
   }
 )
-

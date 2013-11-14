@@ -1,7 +1,7 @@
 class Step
   include Mongoid::Document
 
-  field :date, type: DateTime, default: Date.new
+  field :date, type: DateTime, default: DateTime.new
   field :work_done, type: Symbol, default: :minimum
   field :description, type: String
 
