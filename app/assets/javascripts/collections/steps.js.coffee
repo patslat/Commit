@@ -5,10 +5,10 @@ class Commit.Collections.Steps extends Backbone.Collection
   comparator: (step) ->
     new Date(step.get 'date')
 
-  last90Days: ->
+  lastDays: (n) ->
     today = new Date
     startDate = new Date
-    startDate.setDate(startDate.getDate() - 90)
+    startDate.setDate(startDate.getDate() - n)
 
     while startDate <= today
       unless @findWhere(date: startDate)
