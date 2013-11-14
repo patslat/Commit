@@ -1,0 +1,2 @@
+- @steps.each (step) ->
+  %div(class="step-square #{step.escape 'work_done'}")

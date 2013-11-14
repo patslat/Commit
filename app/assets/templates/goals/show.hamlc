@@ -1,4 +1,2 @@
 %div.goal-description
   = @goal.escape "description"
-
-%div.goal-steps

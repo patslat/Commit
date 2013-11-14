@@ -10,7 +10,7 @@ class Commit.Views.GoalsIndex extends Backbone.View
       show = new Commit.Views.GoalShow({model: goal})
       @children << show
       @$el.append(show.render().$el)
-    return this
+    this
 
   remove: ->
     child.remove() for child in children

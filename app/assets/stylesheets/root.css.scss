@@ -1,3 +1,48 @@
 // Place all the styles related to the root controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+  height: 100%;
+}
+
+#content {
+  height: 100%;
+  width: 100%;
+}
+
+.goals-index {
+  height: 100%;
+  width: 100%;
+}
+
+.goal-show {
+  min-height: 200px;
+  max-width: 500px;
+  border: 1px solid grey;
+}
+
+.steps-index {
+  height: 100%;
+  width: 100%;
+}
+
+.step-square {
+  border: 1px solid grey;
+  width: 25px;
+  height: 25px;
+  float: left;
+  display: inline-block;
+}
+
+  .minimum {
+    background-color: lightseagreen;
+  }
+
+  .sufficient {
+    background-color: mediumseagreen;
+  }
+
+  .maximum {
+    background-color: darkseagreen;
+  }

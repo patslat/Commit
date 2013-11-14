@@ -4,11 +4,14 @@ class Commit.Views.GoalShow extends Backbone.View
 
   template: JST['goals/show']
 
-  render: () ->
+  render: ->
     @$el.html @template(goal: @model)
-    $stepsContainer = @$el.find "goal-steps"
-    # render steps index and append to $stepsContainer
-    return this
+
+    stepsView = new Commit.Views.StepsIndex(collection: @model.steps())
+    @children << stepsView
+    @$el.append stepsView.render().$el
+
+    this
 
   remove: ->
     child.remove() for child in @children
