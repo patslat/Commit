@@ -17,11 +17,13 @@ html, body {
 }
 
 .goal-show {
+  margin: 20px;
   text-align: center;
   display: inline-block;
   min-height: 200px;
   max-width: 500px;
   border: 1px solid grey;
+  border-radius: 5px;
 }
 
 .dg-levels {

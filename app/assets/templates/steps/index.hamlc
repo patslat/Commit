@@ -1,2 +1,3 @@
 - @steps.each (step) ->
-  %div(class="step-square #{step.escape 'work_done'}" data-date="#{step.escape 'date'}")
+  %div( class="step-square #{step.escape 'work_done'}"
+        data-title="#{step.formattedDate()}" )

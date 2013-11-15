@@ -13,3 +13,7 @@ class Commit.Models.Step extends Backbone.Model
       date.getMonth() == matchDate.getMonth() &&
       date.getYear() == matchDate.getYear()
     )
+
+  formattedDate: ->
+    date = @get('date')
+    #$.formatDateTime('mm/dd/y g:ii a', date)
