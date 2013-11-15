@@ -16,4 +16,4 @@ class Commit.Models.Step extends Backbone.Model
 
   formattedDate: ->
     date = @get('date')
-    #$.formatDateTime('mm/dd/y g:ii a', date)
+    $.formatDateTime('mm/dd/y g:ii a', date)

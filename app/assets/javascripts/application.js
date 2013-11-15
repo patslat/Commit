@@ -16,6 +16,7 @@
 //= require backbone
 //= require commit
 //= require bootstrap/dist/js/bootstrap
+//= require jquery.formatDateTime/jquery.formatDateTime
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
