@@ -1,6 +1,9 @@
 class Commit.Views.GoalShow extends Backbone.View
 
-  className: "goal-show"
+  className: "goal-show panel"
+
+  attributes: ->
+    "id": "goal-#{ @model.get '_id' }"
 
   children: []
 
@@ -20,9 +23,9 @@ class Commit.Views.GoalShow extends Backbone.View
   _renderSteps: ->
     stepsView = new Commit.Views.StepsIndex(collection: @model.steps())
     @children << stepsView
-    @$el.append stepsView.render().$el
+    @$el.find('.goal-body').append stepsView.render().$el
 
   _renderDailyGoal: ->
     dailyGoalView = new Commit.Views.DailyGoalShow(model: @model.dailyGoal())
     @children << dailyGoalView
-    @$el.append dailyGoalView.render().$el
+    @$el.find('.goal-body').append dailyGoalView.render().$el

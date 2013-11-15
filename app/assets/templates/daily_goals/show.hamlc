@@ -1,9 +1,19 @@
 %div.dg-title
-  %h3 Daily Goal
+  %p
+    %h4 Daily Goal
 %div.dg-levels
   %div.dg-minimum
-    = @dailyGoal.escape "minimum"
+    %p
+      %strong Minimum:
+    %p
+      = @dailyGoal.escape "minimum"
   %div.dg-sufficient
-    = @dailyGoal.escape "sufficient"
+    %p
+      %strong Sufficient:
+    %p
+      = @dailyGoal.escape "sufficient"
   %div.dg-maximum
-    = @dailyGoal.escape "maximum"
+    %p
+      %strong Maximum:
+    %p
+      = @dailyGoal.escape "maximum"
