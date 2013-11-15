@@ -1,18 +1,15 @@
-%div.dg-title
-  %p
-    %h4 Daily Goal
 %div.dg-levels
-  %div.dg-level.dg-minimum( data-level="minimum" )
+  %div.dg-level.dg-minimum.minimum( data-level="minimum" )
     %p
       %strong Minimum:
     %p
       = @dailyGoal.escape "minimum"
-  %div.dg-level.dg-sufficient( data-level="sufficient" )
+  %div.dg-level.dg-sufficient.sufficient( data-level="sufficient" )
     %p
       %strong Sufficient:
     %p
       = @dailyGoal.escape "sufficient"
-  %div.dg-level.dg-maximum( data-level="maximum" )
+  %div.dg-level.dg-maximum.maximum( data-level="maximum" )
     %p
       %strong Maximum:
     %p

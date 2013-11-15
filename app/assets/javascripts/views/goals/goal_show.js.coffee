@@ -35,5 +35,5 @@ class Commit.Views.GoalShow extends Backbone.View
     $levelDiv = @$el.find '.dg-level'
     level = $levelDiv.data "level"
     $levelDiv.append(
-      "<div class='btn btn-default' data-level='#{level}'>Commit</div>"
+      "<button class='btn btn-default' data-level='#{level}'>Commit</button>"
     )

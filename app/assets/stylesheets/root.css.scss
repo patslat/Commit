@@ -30,6 +30,10 @@ html, body {
   font-size: 2.3em;
 }
 
+.daily-goal {
+  margin-bottom: 10px;
+}
+
 .dg-levels {
 }
 
@@ -46,13 +50,13 @@ html, body {
   }
 
   .minimum {
-    background-color: lightseagreen;
+    background-color: #88F07B;
   }
 
   .sufficient {
-    background-color: mediumseagreen;
+    background-color: #3DF025;
   }
 
   .maximum {
-    background-color: darkseagreen;
+    background-color: #259117;
   }
