@@ -27,3 +27,10 @@ class Commit.Collections.Steps extends Backbone.Collection
       startDate.setDate(startDate.getDate() + 1)
 
     lastDays
+
+  stepForToday: ->
+    @find (step) ->
+      step.matchingDate(new Date)
+
+  noStepForToday: ->
+    !!@stepForToday

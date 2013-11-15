@@ -11,14 +11,15 @@ class Commit.Views.GoalShow extends Backbone.View
 
   render: ->
     @$el.html @template(goal: @model)
+
     @_renderDailyGoal()
+    @_addCommitButtons() if @model.steps().noStepForToday
     @_renderSteps()
     this
 
   remove: ->
     child.remove() for child in @children
     super()
-
 
   _renderSteps: ->
     stepsView = new Commit.Views.StepsIndex(collection: @model.steps())
@@ -29,3 +30,10 @@ class Commit.Views.GoalShow extends Backbone.View
     dailyGoalView = new Commit.Views.DailyGoalShow(model: @model.dailyGoal())
     @children << dailyGoalView
     @$el.find('.goal-body').append dailyGoalView.render().$el
+
+  _addCommitButtons: ->
+    $levelDiv = @$el.find '.dg-level'
+    level = $levelDiv.data "level"
+    $levelDiv.append(
+      "<div class='btn btn-default' data-level='#{level}'>Commit</div>"
+    )
