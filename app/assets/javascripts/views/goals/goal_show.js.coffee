@@ -1,5 +1,7 @@
 class Commit.Views.GoalShow extends Backbone.View
+
   className: "goal-show"
+
   children: []
 
   template: JST['goals/show']

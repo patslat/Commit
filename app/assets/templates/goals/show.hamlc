@@ -1,2 +1,4 @@
-%div.goal-description
+%div.goal-description(
+  data-toggle="collapse"
+  data-target="#daily-goal-#{ @goal.dailyGoal().escape '_id' }" )
   %h1 = @goal.escape "description"
