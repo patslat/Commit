@@ -6,22 +6,32 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %div#navbar
-      %div#notifications
-        - if flash[:errors]
-          %div#errors
-            = flash[:errors]
-      - if !logged_in?
-        %div#authentication
-          %div#sign-in
-            %a{ :href => new_session_url } Sign In
-          %div#sign-up
-            %a{ :href => new_user_url } Sign Up
-      - else
-        %div#user-info
-          %div#current-user
-            = current_user.username
-          %div#sign-out
-            = button_to 'Sign Out', session_url, method: :delete
+    %nav.navbar.navbar-default
+      %div.navbar-header
+      %button.navbar-toggle( type="button"
+        class="navbar-toggle"
+        data-toggle="collapse"
+        data-target="#commit-navbar" )
+        %span.sr-only Toggle Navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+
+      %a.navbar-brand{ :href => "#" }
+        %strong Commit
+
+      %div#commit-navbar.navbar-collapse.collapse
+        %ul.nav.navbar-nav.pull-right
+          - if !logged_in?
+            %li#sign-in
+              %a{ :href => new_session_url } Sign In
+            %li#sign-up
+              %a{ :href => new_user_url } Sign Up
+          - else
+            %li#user-info
+              %a
+                = "Hello, #{ current_user.username }"
+            %li#sign-out
+              %a{ :href => session_url, :method => :delete } Sign Out
 
     = yield
