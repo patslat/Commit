@@ -1,1 +1,3 @@
-%div#goals-index
+%div#new-commit-button-container
+  %button.btn.btn-primary.new-commit-button
+    Make a new commit
