@@ -2,6 +2,13 @@ class Commit.Collections.Steps extends Backbone.Collection
 
   model: Commit.Models.Step
 
+  url: () ->
+    "api/v1/goals/#{ this.goalId }/steps"
+
+  parse: (data) ->
+    this.goalId = data.goalId
+    data.models
+
   comparator: (step) ->
     new Date(step.get 'date')
 

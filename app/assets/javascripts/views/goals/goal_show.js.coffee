@@ -1,5 +1,8 @@
 class Commit.Views.GoalShow extends Backbone.View
 
+  initialize: ({ @model }) ->
+    @listenTo(@model.steps(), "add", @render)
+
   className: "goal-show panel"
 
   attributes: ->
@@ -9,7 +12,12 @@ class Commit.Views.GoalShow extends Backbone.View
 
   template: JST['goals/show']
 
+  events:
+    "click .make-commit": "_makeCommit"
+
   render: ->
+    debugger
+    @_leaveChildren()
     @$el.html @template(goal: @model)
 
     @_renderDailyGoal()
@@ -18,8 +26,10 @@ class Commit.Views.GoalShow extends Backbone.View
     this
 
   remove: ->
-    child.remove() for child in @children
     super()
+
+  _leaveChildren: ->
+    child.remove() for child in @children
 
   _renderSteps: ->
     stepsView = new Commit.Views.StepsIndex(collection: @model.steps())
@@ -33,7 +43,16 @@ class Commit.Views.GoalShow extends Backbone.View
 
   _addCommitButtons: ->
     $levelDiv = @$el.find '.dg-level'
-    level = $levelDiv.data "level"
     $levelDiv.append(
-      "<button class='btn btn-default' data-level='#{level}'>Commit</button>"
+      "<button class='make-commit btn btn-default'>Commit</button>"
+    )
+
+  _makeCommit: (event) ->
+    work_done = $(event.target).parent().data('level')
+    @model.steps().create(
+      {
+        work_done: work_done,
+        date: new Date
+      },
+      { wait: true }
     )

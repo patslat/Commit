@@ -1,7 +1,7 @@
 class Step
   include Mongoid::Document
 
-  field :date, type: DateTime, default: DateTime.new
+  field :date, type: DateTime, default: DateTime.now
   field :work_done, type: Symbol, default: :minimum
   field :description, type: String
 
@@ -13,5 +13,6 @@ class Step
   validates_inclusion_of :work_done, in: [:minimum, :sufficient, :maximum]
 
   embedded_in :goal, class_name: "Goal", inverse_of: :steps
+
 
 end
