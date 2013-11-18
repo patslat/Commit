@@ -4,11 +4,45 @@
       %div.modal-header
         %button.close( type="button" data-dismiss="modal" aria-hidden="true" )
           &times;
-        %h4.modal-title Make a new commitment!
+        %h1.modal-title Make a new commitment!
 
       %div.modal-body
-        %p
-          FORM GOES HERE
+        %div#commit-form-container
+          %form#commit-form
+            %div.commit-description-form
+              %div.commit-description-label
+                %label( for="commit-description" )
+                  %h2 Describe your goal:
+              %div.commit-description-input
+                %textarea#commit-description( rows="4"
+                                              cols="60"
+                                              name="goal[description]" )
+
+            %div#commit-daily-goal-form
+              %div#daily-goal-form-header
+                %h3
+                  Describe your daily goals:
+              %div#daily-goal-maximum-form.form-field
+                %div.daily-goal-maximum-label
+                  %label( for="commit-daily-goal-maximum" ) Maximum
+                  %div.step-square.maximum
+                %div.daily-goal-maximum-input
+                  %textarea#commit-daily-goal-maximum( rows="1" cols="60" )
+
+              %div#daily-goal-sufficient-input.form-field
+                %div.daily-goal-sufficient-label
+                  %label( for="commit-daily-goal-sufficient" ) Sufficient
+                  %div.step-square.sufficient
+                %div.daily-goal-sufficient-input
+                  %textarea#commit-daily-goal-sufficient( rows="1" cols="60" )
+
+              %div#daily-goal-minimum-input.form-field
+                %div.daily-goal-sufficient-label
+                  %label( for="commit-daily-goal-minimum" ) Minimum
+                  %div.step-square.minimum
+                %div.daily-goal-minimum-label
+                  %textarea#commit-daily-goal-minimum( rows="1" cols="60" )
+
 
       %div.modal-footer
         %button.btn.btn-default( type="button" data-dismiss="modal" )
