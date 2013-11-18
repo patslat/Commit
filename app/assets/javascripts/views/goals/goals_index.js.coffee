@@ -1,5 +1,8 @@
 class Commit.Views.GoalsIndex extends Backbone.View
 
+  initialize: ({ @collection }) ->
+    @listenTo(@collection, "add remove change", @render)
+
   className: "goals-index"
 
   children: []
@@ -31,5 +34,5 @@ class Commit.Views.GoalsIndex extends Backbone.View
       @$el.find('#new-commit-form-modal').modal()
 
   _handleForm: ->
-    debugger
-    form = @$el.find('#new-commit-form').data()
+    goalData = @$el.find('#new-commit-form').serializeJSON()
+    @collection.create(goalData)
