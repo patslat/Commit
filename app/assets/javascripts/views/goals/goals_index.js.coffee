@@ -34,5 +34,20 @@ class Commit.Views.GoalsIndex extends Backbone.View
       @$el.find('#new-commit-form-modal').modal()
 
   _handleForm: ->
-    goalData = @$el.find('#new-commit-form').serializeJSON()
-    @collection.create(goalData)
+    #grab data
+    form = @$el.find('#new-commit-form')
+    goalData = form.serializeJSON()
+    form.find('input').val('')
+
+    #kill modal
+    @$el.find('#new-commit-form-modal').modal('hide')
+    $('body').removeClass('modal-open')
+    $('.modal-backdrop').remove()
+
+    @collection.create(
+      goalData,
+      success: ->
+        console.log "HOORAY IT WORKED"
+      error: (data) ->
+        console.log data['errors']
+    )

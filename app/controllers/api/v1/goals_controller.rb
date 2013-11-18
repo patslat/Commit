@@ -4,14 +4,12 @@ class Api::V1::GoalsController < ApplicationController
   respond_to :json
 
   def create
-    @goal = current_user.build_goal(params[:goal])
+    @goal = current_user.goals.build(params[:goal])
     if @goal.save
-      flash[:notice] = 'Goal saved successfully'
+      render :json => @goal
     else
-      flash[:errors] = @goal.errors.full_messages.join(', ')
+      render :json => { :errors => @goal.errors.full_messages }
     end
-
-    respond_with @goal
   end
 
   def destroy
