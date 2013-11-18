@@ -1,4 +1,4 @@
-%div#new-commit-form.modal.fade
+%div#new-commit-form-modal.modal.fade
   %div.modal-dialog
     %div.modal-content
       %div.modal-header
@@ -8,15 +8,13 @@
 
       %div.modal-body
         %div#commit-form-container
-          %form#commit-form
+          %form#new-commit-form
             %div.commit-description-form
               %div.commit-description-label
                 %label( for="commit-description" )
                   %h2 Describe your goal:
               %div.commit-description-input
-                %textarea#commit-description( rows="4"
-                                              cols="60"
-                                              name="goal[description]" )
+                %input#commit-description( name="goal[description]" )
 
             %div#commit-daily-goal-form
               %div#daily-goal-form-header
@@ -27,25 +25,25 @@
                   %label( for="commit-daily-goal-maximum" ) Maximum
                   %div.step-square.maximum
                 %div.daily-goal-maximum-input
-                  %textarea#commit-daily-goal-maximum( rows="1" cols="60" )
+                  %input#commit-daily-goal-maximum( name="goal[daily_goal][maximum]" )
 
               %div#daily-goal-sufficient-input.form-field
                 %div.daily-goal-sufficient-label
                   %label( for="commit-daily-goal-sufficient" ) Sufficient
                   %div.step-square.sufficient
                 %div.daily-goal-sufficient-input
-                  %textarea#commit-daily-goal-sufficient( rows="1" cols="60" )
+                  %input#commit-daily-goal-sufficient( name="goal[daily_goal][sufficient]" )
 
               %div#daily-goal-minimum-input.form-field
                 %div.daily-goal-sufficient-label
                   %label( for="commit-daily-goal-minimum" ) Minimum
                   %div.step-square.minimum
                 %div.daily-goal-minimum-label
-                  %textarea#commit-daily-goal-minimum( rows="1" cols="60" )
+                  %input#commit-daily-goal-minimum( name="goal[daily_goal][minimum]" )
 
 
       %div.modal-footer
         %button.btn.btn-default( type="button" data-dismiss="modal" )
           Close
-        %button.btn.btn-primary
+        %button#submit-commit.btn.btn-primary
           Commit!

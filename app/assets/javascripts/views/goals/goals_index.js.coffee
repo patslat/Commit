@@ -8,7 +8,8 @@ class Commit.Views.GoalsIndex extends Backbone.View
   formTemplate: JST['goals/form']
 
   events:
-    "click .new-commit-button": "triggerForm"
+    "click .new-commit-button": "_triggerForm"
+    "click #submit-commit": "_handleForm"
 
   render: ->
     @$el.html(@template())
@@ -22,9 +23,13 @@ class Commit.Views.GoalsIndex extends Backbone.View
     child.remove() for child in children
     super()
 
-  triggerForm: ->
-    if @$el.find('#new-commit-form')[0]
-      @$el.find('#new-commit-form').modal()
+  _triggerForm: ->
+    if @$el.find('#new-commit-form-modal')[0]
+      @$el.find('#new-commit-form-modal').modal()
     else
       @$el.append(@formTemplate())
-      @$el.find('#new-commit-form').modal()
+      @$el.find('#new-commit-form-modal').modal()
+
+  _handleForm: ->
+    debugger
+    form = @$el.find('#new-commit-form').data()
