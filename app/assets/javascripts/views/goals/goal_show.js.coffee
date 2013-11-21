@@ -1,7 +1,7 @@
 class Commit.Views.GoalShow extends Backbone.View
 
-  initialize: ({ @model }) ->
-    @listenTo(@model.steps(), "add", @render)
+#  initialize: ({ @model }) ->
+#@listenTo(@model.steps(), "add", @render)
 
   className: "goal-show panel"
 
@@ -16,7 +16,6 @@ class Commit.Views.GoalShow extends Backbone.View
     "click .make-commit": "_makeCommit"
 
   render: ->
-    debugger
     @_leaveChildren()
     @$el.html @template(goal: @model)
 
@@ -32,7 +31,7 @@ class Commit.Views.GoalShow extends Backbone.View
     child.remove() for child in @children
 
   _renderSteps: ->
-    stepsView = new Commit.Views.StepsIndex(collection: @model.steps())
+    stepsView = new Commit.Views.StepsIndex(collection: @model.steps(), parent: this)
     @children << stepsView
     @$el.find('.goal-body').append stepsView.render().$el
 
@@ -54,5 +53,10 @@ class Commit.Views.GoalShow extends Backbone.View
         work_done: work_done,
         date: new Date
       },
-      { wait: true }
+      {
+        success: (step) =>
+          # not sure why this is not automatically added
+          @model.steps().add(step)
+        wait: true
+      }
     )
