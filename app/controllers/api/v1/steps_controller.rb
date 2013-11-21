@@ -6,9 +6,9 @@ class Api::V1::StepsController < ApplicationController
     @goal = current_user.goals.find(params[:goal_id])
     @step = @goal.steps.build(params[:step])
     if @step.save
-      respond_with @step
+      render :json => @step
     else
-      head :unprocessable_entity
+      render :json => { :errors => @step.errors.full_messages }
     end
   end
 

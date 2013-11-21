@@ -1,4 +1,8 @@
 class Commit.Views.StepsIndex extends Backbone.View
+
+  initialize: ({ @collection }) ->
+    @listenTo(@collection, 'add', @render)
+
   className: "steps-index"
 
   template: JST['steps/index']
