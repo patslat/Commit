@@ -31,14 +31,17 @@ html, body {
   font-size: 2.3em;
 }
 
-.form-field {
-  margin: 5px;
-}
-
 .daily-goal {
 }
 
-.dg-levels {
+.daily-goal-item {
+}
+
+.daily-goal-item .make-commit {
+  float:right;
+}
+
+.dg-level {
 }
 
 .steps-index {
