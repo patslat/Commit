@@ -20,7 +20,7 @@ class Commit.Views.GoalShow extends Backbone.View
     @$el.html @template(goal: @model)
 
     @_renderDailyGoal()
-    @_addCommitButtons() if @model.steps().noStepForToday
+    @_addCommitButtons() if @model.steps().noStepForToday()
     @_renderSteps()
     this
 

@@ -40,4 +40,4 @@ class Commit.Collections.Steps extends Backbone.Collection
       step.matchingDate(new Date)
 
   noStepForToday: ->
-    !!@stepForToday
+    !@stepForToday()
