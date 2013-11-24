@@ -38,16 +38,20 @@ class Commit.Views.GoalShow extends Backbone.View
     @$el.find('.goal-body').append dailyGoalView.render().$el
 
   _addCommitButtons: ->
-    $levelDiv = @$el.find '.daily-goal-item'
-    $levelDiv.append(
-      "<button class='make-commit btn btn-sm'>Commit</button>"
-    )
+    $levelDivs = @$el.find '.daily-goal-item'
+    for levelDiv in $levelDivs
+      $levelDiv = $(levelDiv)
+      level = $levelDiv.data('level')
+      $levelDiv.append(
+        "<button class='make-commit btn btn-sm #{level}'>Commit</button>"
+      )
 
   _removeCommitButtons: ->
     @$el.find('.make-commit').remove()
 
   _makeCommit: (event) ->
     work_done = $(event.target).parent().data('level')
+    debugger
     @model.steps().create(
       {
         work_done: work_done,
