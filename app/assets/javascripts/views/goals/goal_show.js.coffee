@@ -51,7 +51,6 @@ class Commit.Views.GoalShow extends Backbone.View
 
   _makeCommit: (event) ->
     work_done = $(event.target).parent().data('level')
-    debugger
     @model.steps().create(
       {
         work_done: work_done,
