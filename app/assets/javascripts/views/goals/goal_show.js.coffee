@@ -1,6 +1,6 @@
 class Commit.Views.GoalShow extends Backbone.View
 
-  className: "goal-show panel"
+  className: "goal-show-container panel"
 
   attributes: ->
     "id": "goal-#{ @model.get '_id' }"

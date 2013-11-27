@@ -1,8 +1,9 @@
-%div.goal-description.panel-heading(
-  data-parent="#goal-#{ @goal.get '_id' }"
-  data-toggle="collapse"
-  data-target="#daily-goal-#{ @goal.dailyGoal().escape '_id' }" )
-  %h1.goal-title.panel-title
-    = @goal.get "description"
+%div.goal-show
+  %div.goal-description.panel-heading(
+    data-parent="#goal-#{ @goal.get '_id' }"
+    data-toggle="collapse"
+    data-target="#daily-goal-#{ @goal.dailyGoal().escape '_id' }" )
+    %h1.goal-title.panel-title
+      = @goal.get "description"
 
-%div.goal-body.panel-body
+  %div.goal-body.panel-body
