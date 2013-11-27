@@ -61,6 +61,8 @@ module Commit
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
 
+    config.assets.initialize_on_precompile = false
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
