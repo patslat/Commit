@@ -1,10 +1,10 @@
 %ul.list-group.dg-levels(style='text-align:left;')
   %li.list-group-item.dg-level.dg-minimum
     %p.daily-goal-item( data-level="minimum" )
-      = @dailyGoal.escape "minimum"
+      = @dailyGoal.get "minimum"
   %li.list-group-item.dg-level.dg-sufficient
     %p.daily-goal-item( data-level="sufficient" )
-      = @dailyGoal.escape "sufficient"
+      = @dailyGoal.get "sufficient"
   %li.list-group-item.dg-level.dg-maximum
     %p.daily-goal-item( data-level="maximum" )
-      = @dailyGoal.escape "maximum"
+      = @dailyGoal.get "maximum"

@@ -3,6 +3,6 @@
   data-toggle="collapse"
   data-target="#daily-goal-#{ @goal.dailyGoal().escape '_id' }" )
   %h1.goal-title.panel-title
-    = @goal.escape "description"
+    = @goal.get "description"
 
 %div.goal-body.panel-body
