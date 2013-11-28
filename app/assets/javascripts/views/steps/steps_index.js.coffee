@@ -1,8 +1,6 @@
 class Commit.Views.StepsIndex extends Backbone.View
 
   initialize: ({ @collection, @parent }) ->
-# debugger
-   # @parent.on('add', @render.bind(this))
     @listenTo(@collection, 'add sync', @render)
 
   className: "steps-index"
