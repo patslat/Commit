@@ -17,7 +17,7 @@ class Api::V1::GoalsController < ApplicationController
 
     if current_user.goals.delete(@goal)
       flash[:notice] = 'Goal deleted successfully'
-      head(:ok)
+      render :json => true
     else
       flash[:errors] = 'Unsuccessful delete'
       head(:unprocessable_entity)

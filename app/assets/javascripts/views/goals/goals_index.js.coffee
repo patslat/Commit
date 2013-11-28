@@ -47,7 +47,6 @@ class Commit.Views.GoalsIndex extends Backbone.View
     @collection.create(
       goalData,
       success: ->
-        console.log "HOORAY IT WORKED"
       error: (data) ->
         console.log data['errors']
     )

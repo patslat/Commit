@@ -14,10 +14,11 @@ class Commit.Models.Goal extends Backbone.Model
   parse: (data) ->
     dailyGoalData = dailyGoalData || data.daily_goal
     stepsData = data.steps
+    @id = data._id
 
     delete data.daily_goal
     delete data.steps
 
-    this.dailyGoal().set dailyGoalData
-    this.steps().reset { models: stepsData, goalId: data._id }, parse: true
+    @dailyGoal().set dailyGoalData
+    @steps().reset { models: stepsData, goalId: data._id }, parse: true
     data
