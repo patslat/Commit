@@ -32,6 +32,6 @@
               %a
                 = "Hello, #{ current_user.username }"
             %li#sign-out
-              %a{ :href => session_url, :method => :delete } Sign Out
+              = link_to "Sign Out", session_url, :method => :delete
 
     = yield
