@@ -11,12 +11,14 @@ class Commit.Views.GoalShow extends Backbone.View
 
   events:
     "click .make-commit": "_makeCommit"
+    "click .delete-commit": "_deleteCommit"
 
   render: ->
     @_leaveChildren()
     @$el.html @template(goal: @model)
 
     @_renderDailyGoal()
+    @_addDeleteButton()
     @_addCommitButtons() if @model.steps().noStepForToday()
     @_renderSteps()
     this
@@ -36,6 +38,12 @@ class Commit.Views.GoalShow extends Backbone.View
     dailyGoalView = new Commit.Views.DailyGoalShow(model: @model.dailyGoal())
     @children << dailyGoalView
     @$el.find('.goal-body').append dailyGoalView.render().$el
+
+  _addDeleteButton: ->
+    $dailyGoal = @$el.find '.daily-goal'
+    $dailyGoal.append(
+      "<button class='delete-commit btn btn-sm btn-danger'>Give Up</button>"
+    )
 
   _addCommitButtons: ->
     $levelDivs = @$el.find '.daily-goal-item'
@@ -64,3 +72,6 @@ class Commit.Views.GoalShow extends Backbone.View
         wait: true
       }
     )
+
+  _deleteCommit: ->
+    @model.destroy( wait: true ) if confirm "Are you sure you want to give up?"
