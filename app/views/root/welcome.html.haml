@@ -1,2 +1,13 @@
-%div#welcome
-  %h1 Welcome
+%div.container
+  %div#welcome.jumbotron
+    %h1
+      %strong
+        %em Commit
+    %div.welcome-banner
+      - 99.times do
+        %div.step-square.minimum
+        %div.step-square.sufficient
+        %div.step-square.maximum
+    %p
+      %a.btn.btn-primary.btn-lrg{ :href => new_user_url } Sign Up
+      %a.btn.btn-primary.btn-lrg{ :href => new_session_url } Sign In
