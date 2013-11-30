@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'unicorn'
 
 gem 'backbone-on-rails'
 
@@ -13,7 +14,12 @@ gem 'bcrypt-ruby', '~>3.1.2', require: 'bcrypt'
 gem 'mongoid'
 gem 'bson_ext'
 
-gem 'unicorn'
+
+#for sms
+gem 'twilio-ruby'
+gem 'iron_cache'
+
+gem 'figaro'
 
 group :assets do
   gem 'sass-rails', '~>3.2.3'
